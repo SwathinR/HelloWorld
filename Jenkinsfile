@@ -13,7 +13,12 @@ pipeline {
 		}
 		stage('Testing Stage'){
 			steps{		
-				echo 'COmpleted!'
+				def response = httpRequest (consoleLogResponseBody: true,
+     			contentType: 'APPLICATION_JSON',
+      			httpMode: 'GET',
+      			url: "http://dummy.restapiexample.com/api/v1/employees",
+      			validResponseCodes: '200')
+    			return response
 			}		
 		}
 	}
