@@ -1,18 +1,19 @@
 pipeline {
 	agent any
+	tools {
+        maven 'Maven_3.8.3' 
+    }
 	stages{
 		stage('Compile Stage'){
 				
-			steps{		
-				withMaven(maven: 'Maven_3_8_3')
-				sh 'mvn clean compile'
-			}
+			steps{
+                bat "mvn clean compile" 
+        	}
 		
 		}
 		stage('Testing Stage'){
 			steps{		
-				withMaven(maven: 'Maven_3_8_3')
-				sh 'mvn clean compile'
+				echo 'COmpleted!'
 			}		
 		}
 	}
